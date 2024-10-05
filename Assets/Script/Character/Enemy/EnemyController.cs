@@ -1,17 +1,20 @@
 // Scripts/Characters/Enemy/EnemyController.cs
+using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class EnemyController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float movementSpeed = 3f;
     [SerializeField] private int movingDistance = 5;
-    
+
     [Header("Attack Settings")]
     [SerializeField] private int damageAmount = 10;
 
     [Header("Components")]
     [SerializeField] private Health health; // Assign via Inspector
+    private RubbishBehaviour rubbishBehaviour;
 
     private Vector3 initialPosition;
     private Vector3 targetPosition;
@@ -19,12 +22,15 @@ public class EnemyController : MonoBehaviour
 
     private Transform playerTransform;
 
-    private float maxChaseDistance = 4f; 
+    private float maxChaseDistance = 4f;
+    [SerializeField] private int maxRubbish = 3;
 
     void Start()
     {
         initialPosition = transform.position;
         targetPosition = new Vector3(initialPosition.x + movingDistance, initialPosition.y, initialPosition.z);
+
+        rubbishBehaviour = GetComponent<RubbishBehaviour>();
     }
 
     void Update()
@@ -37,6 +43,19 @@ public class EnemyController : MonoBehaviour
         {
             ChasePlayer();
         }
+
+        SpawnRubbish();
+    }
+
+    private void SpawnRubbish()
+    {
+        if (rubbishBehaviour.currentRubbish < maxRubbish)
+        {
+            StartSpawningRubbish();
+        } else {
+            StopSpawningRubbish();
+        }
+        Debug.Log(rubbishBehaviour.currentRubbish);
     }
 
     private void Patrol()
@@ -118,6 +137,7 @@ public class EnemyController : MonoBehaviour
     private void OnDeath()
     {
         Debug.Log("Enemy has died.");
+        StopSpawningRubbish();
     }
 
     void Awake()
@@ -131,5 +151,16 @@ public class EnemyController : MonoBehaviour
         {
             health.OnDeath += OnDeath;
         }
+    }
+
+    private void StartSpawningRubbish()
+    {
+        rubbishBehaviour.enabled = true;
+        
+    }
+
+    private void StopSpawningRubbish()
+    {
+        rubbishBehaviour.StopSpawning();
     }
 }

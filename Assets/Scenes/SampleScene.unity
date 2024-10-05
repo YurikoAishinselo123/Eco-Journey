@@ -687,10 +687,10 @@ GameObject:
   - component: {fileID: 756639031}
   - component: {fileID: 756639027}
   - component: {fileID: 756639026}
-  - component: {fileID: 756639030}
   - component: {fileID: 756639034}
   - component: {fileID: 756639033}
   - component: {fileID: 756639032}
+  - component: {fileID: 756639035}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -837,21 +837,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &756639030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756639025}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadccffa718a54004813a03599a4e0ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 3
-  movingPosition: 3
-  attackPlayer: 0
 --- !u!61 &756639031
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -940,6 +925,23 @@ MonoBehaviour:
   movingDistance: 5
   damageAmount: 10
   health: {fileID: 756639033}
+  maxRubbish: 3
+--- !u!114 &756639035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756639025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac2d79d361834e66afca41ce197ebb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rubbishPrefab: {fileID: 1261141070549760482, guid: c9c0f0b97d42a47ce9dcb852aec82204, type: 3}
+  spawnInterval: 3
+  xOffset: -1
+  currentRubbish: 0
 --- !u!1 &848659711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,7 +1555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 204.1, y: 105}
+  m_AnchoredPosition: {x: 124, y: 105}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1286844104
@@ -1646,6 +1648,7 @@ MonoBehaviour:
   jumpForce: 3
   rb: {fileID: 1885089870}
   healthSlider: {fileID: 0}
+  healthManager: {fileID: 0}
 --- !u!61 &1885089869
 BoxCollider2D:
   m_ObjectHideFlags: 0
