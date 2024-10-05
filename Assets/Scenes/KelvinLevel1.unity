@@ -1172,8 +1172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0
   jumpForce: 0
-  rb: {fileID: 0}
-  healthSlider: {fileID: 0}
+  rb: {fileID: 1517613239}
+  animator: {fileID: 1517613242}
+  healthSlider: {fileID: 751555765}
 --- !u!61 &1517613238
 BoxCollider2D:
   m_ObjectHideFlags: 0
