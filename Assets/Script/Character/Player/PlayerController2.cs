@@ -76,7 +76,7 @@ public class PlayerController2 : MonoBehaviour
 
     private void HandleAttack()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl)) 
+        if (Input.GetKeyDown(KeyCode.Return)) 
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1f); 
 
