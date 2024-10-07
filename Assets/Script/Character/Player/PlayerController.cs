@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController2 : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float movementSpeed = 5f;
@@ -8,9 +8,13 @@ public class PlayerController2 : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Health health; 
+    [SerializeField] private Animator animator;
+    [SerializeField] private Health health;
 
-    private bool isGrounded = true; 
+    private float horizontalAxis;
+    private Vector2 direction;
+
+    private bool isGrounded = true;
 
     void Start()
     {
@@ -30,23 +34,38 @@ public class PlayerController2 : MonoBehaviour
     {
         HandleMovement();
         HandleJump();
-        HandleAttack(); 
+        HandleAnimation();
+        HandleAttack();
         HandleFacing();
     }
 
 
     private void HandleMovement()
     {
-        float moveInput = Input.GetAxisRaw("Horizontal");
-        Vector2 velocity = rb.velocity;
-        velocity.x = moveInput * movementSpeed;
-        rb.velocity = velocity;
+        horizontalAxis = Input.GetAxis("Horizontal");
+        direction = new Vector2(horizontalAxis, 0);
+        transform.Translate(direction * Time.deltaTime * movementSpeed);
+    }
+
+    private void HandleAnimation()
+    {
+        if (horizontalAxis != 0)
+        {
+            animator.SetBool("Walk", true);
+            animator.SetBool("Idle", false);
+        }
+
+        else
+        {
+            animator.SetBool("Idle", true);
+            animator.SetBool("Walk", false);
+        }
     }
 
     private void HandleFacing()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
-        if (moveInput != 0) 
+        if (moveInput != 0)
         {
             transform.localScale = new Vector3(Mathf.Sign(moveInput) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
@@ -76,13 +95,13 @@ public class PlayerController2 : MonoBehaviour
 
     private void HandleAttack()
     {
-        if (Input.GetKeyDown(KeyCode.Return)) 
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1f); 
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1f);
 
             if (hit.collider != null && hit.collider.CompareTag("Enemy"))
             {
-                Health enemyHealth = hit.collider.GetComponent<Health>(); 
+                Health enemyHealth = hit.collider.GetComponent<Health>();
                 if (enemyHealth != null)
                 {
                     int damageAmount = 10;
