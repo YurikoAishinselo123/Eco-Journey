@@ -19,8 +19,7 @@ public class HealthManager : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Player is dead!");
-            // Handle player death (e.g., trigger a death animation, restart level, etc.)
+            Die(); // Call the Die method if health reaches 0
         }
     }
 
@@ -32,5 +31,11 @@ public class HealthManager : MonoBehaviour
     public int GetMaxHealth()
     {
         return maxHealth; // Provide a way to get the maximum health
+    }
+
+    private void Die()
+    {
+        Debug.Log(gameObject.name + " has died!");
+        Destroy(gameObject); // Destroy the game object when it dies
     }
 }
