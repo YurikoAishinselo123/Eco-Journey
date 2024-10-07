@@ -7,6 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private int movingPosition;
     [SerializeField] private int attackDamage = 10; // Damage dealt by the enemy
     [SerializeField] private Slider healthSlider; // Reference to the enemy health slider
+    [SerializeField] private float cooldownTime = 2f; // Time between attacks
 
     private Vector3 targetPosition;
     private Vector3 initialPosition;
@@ -16,6 +17,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Transform playerTransform; // Reference to the player's transform
     private float maxChaseDistance = 4f; // Maximum distance to chase the player
     private float distanceMoved = 0f;    // Track how far the enemy has moved
+    private float nextAttackTime = 0f;   // Time when the enemy can attack again
 
     private HealthManager healthManager; // Reference to the enemy's health manager
 
@@ -114,9 +116,10 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             HealthManager healthManager = other.gameObject.GetComponent<HealthManager>();
-            if (healthManager != null)
+            if (healthManager != null && Time.time >= nextAttackTime) // Check if the cooldown is over
             {
                 healthManager.DealDamage(attackDamage); // Call the method to deal damage
+                nextAttackTime = Time.time + cooldownTime; // Set the next available attack time
             }
         }
     }
