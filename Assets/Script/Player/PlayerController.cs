@@ -3,7 +3,7 @@ using UnityEngine.UI; // Add this for using UI elements like Slider
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float movementSpeed = 2.5f; 
     [SerializeField] private float jumpForce;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
@@ -28,27 +28,27 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Movement();
+        movement();
         Jump();
         UpdateHealthSlider(); // Update the slider value every frame
     }
 
-    void Movement()
+    private void movement()
     {
         horizontalAxis = Input.GetAxis("Horizontal");
         direction = new Vector2(horizontalAxis, 0);
 
         if (horizontalAxis != 0)
         {
-            animator.SetBool("PlayerWalk", true);
-            animator.SetBool("PlayerIdle", false);
+            animator.SetBool("Walk", true);
+            animator.SetBool("Idle", false);
             transform.Translate(direction * Time.deltaTime * movementSpeed);
         }
 
         else
         {
-            animator.SetBool("PlayerIdle", true);
-            animator.SetBool("PlayerWalk", false);
+            animator.SetBool("Idle", true);
+            animator.SetBool("Walk", false);
         }
     }
 
