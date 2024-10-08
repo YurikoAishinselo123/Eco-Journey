@@ -7,7 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private int movingPosition;
     [SerializeField] private int attackDamage = 10; // Damage dealt by the enemy
     [SerializeField] private Slider healthSlider; // Reference to the enemy health slider
-    [SerializeField] private float cooldownTime = 2f; // Time between attacks
+    [SerializeField] private float cooldownTime = 1f; 
 
     private Vector3 targetPosition;
     private Vector3 initialPosition;
