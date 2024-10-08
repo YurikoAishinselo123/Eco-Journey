@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 37982998}
   - component: {fileID: 37982997}
   - component: {fileID: 37982996}
+  - component: {fileID: 37983000}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -259,6 +260,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &37983000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37982995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d86dafe61d81304183b23f1c0d1b174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FollowSpeed: 2
+  yoffset: 1
+  target: {fileID: 1517613241}
 --- !u!1 &119200478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,12 +1141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f97f5f2f3254488391417af9c4dfeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2.5
-  jumpForce: 5
+  movementSpeed: 10
+  jumpForce: 10
+  jumlahLompatan: 2
   rb: {fileID: 1517613239}
   animator: {fileID: 1517613242}
   healthSlider: {fileID: 751555765}
-  attackDamage: 10
+  attackDamage: 2
 --- !u!50 &1517613239
 Rigidbody2D:
   serializedVersion: 4
@@ -1199,7 +1216,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2100166961, guid: 1173bf15191ef9f4d886e997b843ac88, type: 3}
+  m_Sprite: {fileID: -2068368, guid: 1173bf15191ef9f4d886e997b843ac88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1207,7 +1224,7 @@ SpriteRenderer:
   m_Size: {x: 4.8, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1517613241
@@ -1235,7 +1252,7 @@ Animator:
   m_GameObject: {fileID: 1517613233}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa1912a5ebca2114aa83fd77b0acd0af, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1278,7 +1295,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0826118, y: 1.1549282}
+  m_Offset: {x: 0.044891357, y: 1.0875548}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1289,7 +1306,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4317966, y: 4.442984}
+  m_Size: {x: 2.4093208, y: 4.308237}
   m_EdgeRadius: 0
 --- !u!114 &1517613244
 MonoBehaviour:
@@ -1450,7 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac2d79d361834e66afca41ce197ebb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rubbishPrefab: {fileID: 0}
+  rubbishPrefab: {fileID: 1261141070549760482, guid: c9c0f0b97d42a47ce9dcb852aec82204, type: 3}
   spawnInterval: 3
   xOffset: -1
   currentRubbish: 0
@@ -1524,7 +1541,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.2757883, y: 2.6889434}
+  m_Size: {x: 10, y: 2.6889434}
   m_EdgeRadius: 0
 --- !u!61 &2018275651
 BoxCollider2D:
@@ -1654,6 +1671,7 @@ MonoBehaviour:
   movingPosition: 4
   attackDamage: 10
   healthSlider: {fileID: 430429637}
+  cooldownTime: 1
 --- !u!114 &2018275655
 MonoBehaviour:
   m_ObjectHideFlags: 0

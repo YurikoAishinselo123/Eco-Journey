@@ -1,3 +1,6 @@
+using System.ComponentModel.Design;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI; // Add this for using UI elements like Slider
 
@@ -5,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 2.5f;
     [SerializeField] private float jumpForce;
+    [SerializeField] private int jumlahLompatan = 2;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private Slider healthSlider; // Reference to the health slider
@@ -30,6 +34,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         movement();
+        facing();
         Jump();
         Attack(); // Check for attack input
         UpdateHealthSlider(); // Update the slider value every frame
@@ -56,9 +61,28 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space) && jumlahLompatan > 0)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // Apply a force for jumping
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumlahLompatan = jumlahLompatan - 1;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D Player)
+    {
+        if(Player.gameObject.CompareTag("Ground"))
+        {
+            jumlahLompatan = 2;
+        }
+
+        else if(Player.gameObject.CompareTag("Enemy"))
+        {
+            jumlahLompatan = 2;
+        }
+
+        else if (Player.gameObject.CompareTag("Obstacle"))
+        {
+            jumlahLompatan = 2;
         }
     }
 
@@ -82,7 +106,22 @@ public class PlayerController : MonoBehaviour
                 {
                     enemyHealth.DealDamage(attackDamage); // Deal damage to the enemy
                 }
+
+                animator.SetTrigger("Punch");
             }
+        }
+    }
+
+    void facing()
+    {
+        if(horizontalAxis < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        else if(horizontalAxis > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }
