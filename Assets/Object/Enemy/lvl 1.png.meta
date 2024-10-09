@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 0091dbe578f51f742bf44ea5abe41fe9
+=======
+guid: a2e3388ba16af954899375ed8ad37beb
+>>>>>>> Stashed changes
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -124,8 +128,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< Updated upstream
       spriteID: 9f89cb9328854e34b8a02e63a05b2010
       internalID: 2069339834
+=======
+      spriteID: 2b87bec5ee2d6cf439e6fb82a844c0a4
+      internalID: 840686417
+>>>>>>> Stashed changes
       vertices: []
       indices: 
       edges: []
@@ -145,8 +154,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< Updated upstream
       spriteID: 012fe4f95ed300949a60c6f0dc74e96c
       internalID: -1716259467
+=======
+      spriteID: 13dd35ea6e4b6f44b9e6553df08ed22e
+      internalID: 1336482939
+>>>>>>> Stashed changes
       vertices: []
       indices: 
       edges: []
@@ -166,8 +180,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< Updated upstream
       spriteID: 50a22df9ab0df434b83b4c56c135a825
       internalID: -907267144
+=======
+      spriteID: 18736b8a1496563468a24e669b1e858c
+      internalID: 2126107947
+>>>>>>> Stashed changes
       vertices: []
       indices: 
       edges: []
@@ -187,8 +206,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< Updated upstream
       spriteID: 1235f0883e5293748bfb50e25b3439a1
       internalID: -606741565
+=======
+      spriteID: ef9618a6c1d2e7747a832e0092d4a57a
+      internalID: -487008328
+>>>>>>> Stashed changes
       vertices: []
       indices: 
       edges: []
@@ -204,10 +228,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+<<<<<<< Updated upstream
       lvl 1_0: 2069339834
       lvl 1_1: -1716259467
       lvl 1_2: -907267144
       lvl 1_3: -606741565
+=======
+      lvl 1_0: 840686417
+      lvl 1_1: 1336482939
+      lvl 1_2: 2126107947
+      lvl 1_3: -487008328
+>>>>>>> Stashed changes
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
